@@ -15,7 +15,7 @@ class SolutionTest {
         int[][] matrix = {
                 {}
         };
-        solution.rotate(matrix);
+        solution.rotate(matrix, 0, 0, matrix.length);
     }
 
     @Test
@@ -24,7 +24,7 @@ class SolutionTest {
         int[][] matrix = {
                 {1}
         };
-        solution.rotate(matrix);
+        solution.rotate(matrix, 0, 0, matrix.length);
         assertEquals(1, matrix[0][0]);
     }
 
@@ -36,7 +36,7 @@ class SolutionTest {
                 {2, 2}
         };
 
-        solution.rotate(matrix);
+        solution.rotate(matrix, 0, 0, matrix.length);
 
         int[][] expected = {
                 {2, 1},
@@ -55,7 +55,7 @@ class SolutionTest {
                 {7, 8, 9}
         };
 
-        solution.rotate(matrix);
+        solution.rotate(matrix, 0, 0, matrix.length);
 
         int[][] expected = {
                 {7, 4, 1},
@@ -76,7 +76,7 @@ class SolutionTest {
                 {13, 14, 15, 16}
         };
 
-        solution.rotate(matrix);
+        solution.rotate(matrix, 0, 0, matrix.length);
 
         int[][] expected = {
                 {13, 9, 5, 1},

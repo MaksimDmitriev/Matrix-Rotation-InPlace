@@ -2,7 +2,7 @@ package com.app;
 
 public class Solution {
 
-    public void rotate(int[][] matrix) {
+    public void rotate(int[][] matrix, int rowIndex, int colIndex, int hi) {
         /*
         int[][] matrix = {
                 {1, 2, 3},
@@ -12,13 +12,17 @@ public class Solution {
         matrix[2][1] = 8
         */
 
-        final int N = matrix.length;
-        for (int i = 0; i < N - 1; i++) {
-            int t = matrix[0][i];
-            matrix[0][i] = matrix[N - 1 - i][0];
-            matrix[N - 1 - i][0] = matrix[N - 1][N - 1 - i];
-            matrix[N - 1][N - 1 - i] = matrix[i][N - 1];
-            matrix[i][N - 1] = t;
+        int offset = 0;
+        for (int i = colIndex; i < hi - 1; i++) {
+            int t = matrix[rowIndex][i];
+            matrix[rowIndex][i] = matrix[hi - 1 - offset][rowIndex];
+            matrix[hi - 1 - offset][rowIndex] = matrix[hi - 1][hi - 1 - offset];
+            matrix[hi - 1][hi - 1 - offset] = matrix[i][hi - 1];
+            matrix[i][hi - 1] = t;
+            offset++;
+        }
+        if (colIndex + 1 < hi - 1) {
+            rotate(matrix, rowIndex + 1, colIndex + 1, hi - 1);
         }
     }
 }
